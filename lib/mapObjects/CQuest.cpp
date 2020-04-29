@@ -172,9 +172,9 @@ void CQuest::getVisitText(MetaString &iwText, std::vector<Component> &components
 			break;
 		case MISSION_HERO:
 			//FIXME: portrait may not match hero, if custom portrait was set in map editor
-			components.push_back(Component(Component::HERO_PORTRAIT, VLC->heroh->heroes[m13489val]->imageIndex, 0, 0));
+			components.push_back(Component(Component::HERO_PORTRAIT, VLC->heroh->objects[m13489val]->imageIndex, 0, 0));
 			if(!isCustom)
-				iwText.addReplacement(VLC->heroh->heroes[m13489val]->name);
+				iwText.addReplacement(VLC->heroh->objects[m13489val]->name);
 			break;
 		case MISSION_KILL_CREATURE:
 			{
@@ -310,7 +310,7 @@ void CQuest::getRolloverText(MetaString &ms, bool onHover) const
 			}
 			break;
 		case MISSION_HERO:
-			ms.addReplacement(VLC->heroh->heroes[m13489val]->name);
+			ms.addReplacement(VLC->heroh->objects[m13489val]->name);
 			break;
 		case MISSION_PLAYER:
 			ms.addReplacement(VLC->generaltexth->colors[m13489val]);
@@ -393,7 +393,7 @@ void CQuest::getCompletionText(MetaString &iwText, std::vector<Component> &compo
 			break;
 		case MISSION_HERO:
 			if (!isCustomComplete)
-				iwText.addReplacement(VLC->heroh->heroes[m13489val]->name);
+				iwText.addReplacement(VLC->heroh->objects[m13489val]->name);
 			break;
 		case MISSION_PLAYER:
 			if (!isCustomComplete)
@@ -810,7 +810,7 @@ void CGSeerHut::completeQuest (const CGHeroInstance * h) const //reward
 			cb->changeSecSkill(h, SecondarySkill(rID), rVal, false);
 			break;
 		case ARTIFACT:
-			cb->giveHeroNewArtifact(h, VLC->arth->artifacts[rID],ArtifactPosition::FIRST_AVAILABLE);
+			cb->giveHeroNewArtifact(h, VLC->arth->objects[rID],ArtifactPosition::FIRST_AVAILABLE);
 			break;
 		case SPELL:
 		{
